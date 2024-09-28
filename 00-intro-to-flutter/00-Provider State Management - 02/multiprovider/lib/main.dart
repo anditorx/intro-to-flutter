@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.purple,
-            title: Text("Multi Provider"),
+            title: const Text("Multi Provider"),
           ),
           body: Center(
             child: Column(
@@ -34,31 +34,38 @@ class MyApp extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Balance"),
+                    const Text("Balance"),
                     Container(
+                      height: 30,
+                      width: 150,
+                      margin: const EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.purple.shade100,
+                          border: Border.all(color: Colors.purple, width: 2)),
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Consumer<Money>(
                           builder: (context, money, _) => Text(
                             money.balance.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.purple,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                      height: 30,
-                      width: 150,
-                      margin: EdgeInsets.all(5),
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.purple.shade100,
-                          border: Border.all(color: Colors.purple, width: 2)),
                     ),
                   ],
                 ),
                 Container(
+                  height: 30,
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color: Colors.black, width: 2),
+                  ),
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Consumer<Cart>(
@@ -66,14 +73,14 @@ class MyApp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Apple (500) x " + cart.quantity.toString(),
-                            style: TextStyle(
+                            "Apple (500) x ${cart.quantity}",
+                            style: const TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             (500 * cart.quantity).toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -81,12 +88,6 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                   ),
-                  height: 30,
-                  margin: EdgeInsets.all(5),
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Colors.black, width: 2)),
                 ),
               ],
             ),
@@ -101,11 +102,11 @@ class MyApp extends StatelessWidget {
                     money.balance -= 500;
                   }
                 },
-                child: Icon(
+                backgroundColor: Colors.purple,
+                child: const Icon(
                   Icons.add_shopping_cart,
                   color: Colors.white,
                 ),
-                backgroundColor: Colors.purple,
               ),
             ),
           ),
